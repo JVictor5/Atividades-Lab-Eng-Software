@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Atividade 27-02</title>
+  </head>
+  <body>
+    <ul class="menu cf">
+      <li><a href="../index.html">Home</a></li>
+      <li>
+        <a href="../atividade1/Atividade1.html">Semana 1</a>
+        <ul class="submenu">
+          <li><a href="../atividade1/Atividade1.html">Atividade 1</a></li>
+          <li><a href="../atividade1/Atividade1.html">Atividade 2</a></li>
+          <li><a href="../atividade1/Atividade1.html">Atividade 3</a></li>
+          <li><a href="../atividade1/Atividade1.html">Atividade 4</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Semana 2</a>
+        <ul class="submenu">
+          <li><a href="#">Atividade 1 </a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="total">
+      <h1 class="text">Atividade Lab Eng. de Software 27/02</h1>
+
+      <div class="cont">
+        <form onsubmit="adicionar()" id="form">
+          <input type="text" id="dado" placeholder="Insira um dado" />
+          <button type="submit">Adicionar</button>
+        </form>
+
+        <div>
+          <ul id="lista" class="lista"></ul>
+        </div>
+      </div>
+    </div>
+    <script src="atividade2.js"></script>
+  </body>
+</html>
