@@ -17,9 +17,46 @@
   padding: 20px;
   border-radius: 8px;
   width: 50rem;
+} 
+
+/* relogio */
+
+.relogio {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 200px;
+  width: 550px;
+  background: transparent;
+  border-radius: 15px;
+  background: rgba(5, 5, 5, 0.9);
 }
 
-form {
+.relogio div {
+  height: 170px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  border-radius: 7px;
+  letter-spacing: 3px;
+}
+
+.relogio span {
+  font-weight: bolder;
+  font-size: 60px;
+}
+
+.relogio span.tempo {
+  font-size: 10px;
+}
+
+/*  */
+
+.inputT {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -81,18 +118,4 @@ button:hover span {
 
 button:active {
   transform: scale(0.9);
-}
-
-.lista {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.conteudoLi {
-  background-color: #f9f9f9;
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
