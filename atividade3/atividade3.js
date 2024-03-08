@@ -1,5 +1,15 @@
 // =-=-=-=-=-=-=-= Questão 1 =-=-=-=-=-=-=-=
+function verificarDia() {
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
 
+  const dataAtual = new Date().toLocaleDateString("pt-BR", options);
+  alert(dataAtual);
+}
 // =-=-=-=-=-=-=-= Questão 2 =-=-=-=-=-=-=-=
 function horaRelogio() {
   let dateToday = new Date();
