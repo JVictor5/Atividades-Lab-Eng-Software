@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="atividade4.css" />
+  </head>
+  <body>
+    <ul class="menu cf">
+      <li><a href="../index.html">Home</a></li>
+      <li>
+        <a href="../atividade1/atividade1.html">Semana 1</a>
+        <ul class="submenu">
+          <li><a href="../atividade1/atividade1.html">Atividade 1</a></li>
+          <li><a href="../atividade1/atividade1.html">Atividade 2</a></li>
+          <li><a href="../atividade1/atividade1.html">Atividade 3</a></li>
+          <li><a href="../atividade1/atividade1.html">Atividade 4</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../atividade2/atividade2.html">Semana 2</a>
+        <ul class="submenu">
+          <li><a href="../atividade2/atividade2.html">Atividade 1 </a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../atividade3/atividade3.html">Semana 3</a>
+        <ul class="submenu">
+          <li><a href="../atividade3/atividade3.html">Atividade 1 </a></li>
+          <li><a href="../atividade3/atividade3.html">Atividade 2 </a></li>
+          <li><a href="../atividade3/atividade3.html">Atividade 3 </a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../atividade4/atividade4.html">Semana 4</a>
+        <ul class="submenu">
+          <li><a href="../atividade4/atividade4.html">Atividade 1 </a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <h1 class="text">Atividade Lab Eng. de Software 12/03</h1>
+    <div class="tipo">
+      <div class="buttons">
+        <button class="botao" id="btnAdicionar">ADD</button>
+        <button class="botao" id="btnListar">Lista</button>
+      </div>
+    </div>
+    <br />
+    <div id="formulario">
+      <div class="tipo" id="formContainer" style="display: none">
+        <form method="POST">
+          <label for="nome">Nome:</label><br />
+          <input type="text" id="nome" name="nome" required /><br /><br />
+
+          <label for="email">Email:</label><br />
+          <input type="email" id="email" name="email" required /><br /><br />
+
+          <label for="data_nascimento">Data de Nascimento:</label><br />
+          <input
+            type="date"
+            id="data_nascimento"
+            name="data_nascimento"
+            required
+          /><br /><br />
+
+          <label for="telefone_fixo">Telefone Fixo:</label><br />
+          <input
+            type="tel"
+            id="telefone_fixo"
+            name="telefone_fixo"
+          /><br /><br />
+
+          <label for="celular">Celular:</label><br />
+          <input type="tel" id="celular" name="celular" required /><br /><br />
+
+          <label for="matricula">Matrícula:</label><br />
+          <input
+            type="text"
+            id="matricula"
+            name="matricula"
+            required
+          /><br /><br />
+
+          <label for="tipo">Você é:</label><br />
+          <div class="radio-label">
+            <input type="radio" id="aluno" name="tipo" value="aluno" required />
+            <label for="aluno">Aluno</label>
+            <input
+              type="radio"
+              id="professor"
+              name="tipo"
+              value="professor"
+              required
+            />
+            <label for="professor">Professor</label>
+          </div>
+
+          <div id="alunos" style="display: none">
+            <label for="curso">Curso:</label><br />
+            <input type="text" id="curso" name="curso" /><br /><br />
+          </div>
+
+          <div id="professores" style="display: none">
+            <label for="lattes">Lattes:</label><br />
+            <input type="text" id="lattes" name="lattes" /><br /><br />
+
+            <label for="area_atuacao">Área de Atuação:</label><br />
+            <input
+              type="text"
+              id="area_atuacaos"
+              name="area_atuacao"
+            /><br /><br />
+          </div>
+
+          <input type="submit" value="Submit" onclick="main()" />
+        </form>
+      </div>
+    </div>
+    <div id="tabelas">
+      <div class="tipo" id="tablesContainer" style="display: none">
+        <div class="tables">
+          <h2 class="texto">Aluno</h2>
+          <table id="tabelaAlunos">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone Fixo</th>
+                <th>Celular</th>
+                <th>Curso</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-tabela-alunos"></tbody>
+          </table>
+          <br />
+          <h2 class="texto">Professor</h2>
+          <table id="tabelaProfessores">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone Fixo</th>
+                <th>Celular</th>
+                <th>Area de Atuação</th>
+                <th>Lattes</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-tabela-professores"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="semana4.js"></script>
+  </body>
+</html>

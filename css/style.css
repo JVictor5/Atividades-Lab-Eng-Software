@@ -158,3 +158,6 @@ body {
 .menu > li:hover .submenu li:nth-child(odd) {
   -webkit-transform: skewX(-25deg) translateX(-15px);
 }
+.logo {
+  filter: drop-shadow(10px 7px 10px white);
+}
