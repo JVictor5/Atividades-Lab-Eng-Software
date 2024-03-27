@@ -1,0 +1,99 @@
+/* ------ Body ------ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.text {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#calculadora {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.calculadora {
+  width: auto;
+  height: auto;
+  border: 12px solid #bbdefa;
+  background-color: #000000;
+  border-radius: 50px;
+}
+/* ------ Body ------ */
+
+/* ------ Display ------ */
+.display {
+  height: 140px;
+  margin: auto;
+  width: 90%;
+  overflow: hidden;
+  font-size: 55px;
+}
+.result {
+  margin-top: 75px;
+  color: white;
+  text-align: right;
+}
+/* ------ Display ------ */
+
+/* ------ Button ------ */
+
+.button-container {
+  width: auto;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+
+.button-container input[type="button"] {
+  border: none;
+  cursor: pointer;
+  min-width: 75px;
+  height: 75px;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.color1 {
+  background-color: #a5a5a5;
+  color: #0c0c0c;
+  border-radius: 50%;
+}
+
+.color2 {
+  background-color: #333333;
+  color: #ebebeb;
+  border-radius: 50%;
+}
+
+.color3 {
+  background-color: #fd9b02;
+  color: #faf7f7;
+  border-radius: 50%;
+}
+
+.button-0 {
+  background-color: #333333;
+  color: #ebebeb;
+  border-radius: 60px;
+  grid-column: span 2;
+}
+/* ------ Button ------ */
+
+/* ------ Detalhe ------ */
+
+.detalhe {
+  width: 150px;
+  height: 5px;
+  background-color: #fff;
+  margin: 30px auto 20px auto;
+  border-radius: 100px;
+}
+
+/* ------ Detalhe ------ */
