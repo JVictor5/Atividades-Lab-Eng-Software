@@ -30,22 +30,19 @@ function loadPage() {
   const mainContainer = document.createElement("div");
   mainContainer.setAttribute(
     "style",
-    "width: 70%; display: grid; grid-template-columns: 1fr 1fr; justify-content: center;"
+    "width: 70%; display: grid; grid-template-columns: 1fr 1fr; justify-content: center; margin: 0 auto; color: #fff;"
   );
 
   const containerTotal = document.createElement("div");
   containerTotal.setAttribute(
     "style",
-    "margin: auto; padding-left: 90px; display: flex; flex-direction: column; align-items: center; grid-column: span 3;"
+    "margin: auto; display: flex; flex-direction: column; align-items: center; grid-column: span 3;"
   );
 
   const buttonReset = document.createElement("img");
   buttonReset.src = "https://cdn-icons-png.freepik.com/512/2618/2618245.png";
   buttonReset.onclick = reset;
-  buttonReset.setAttribute(
-    "style",
-    "margin-right: 30px; width: 60px; height: 60px;"
-  );
+  buttonReset.setAttribute("style", "width: 60px; height: 60px;");
 
   const title = document.createElement("h1");
   title.textContent = "Total";
@@ -103,12 +100,16 @@ function createGenderSection(titleText, gender) {
 
   const counterArea = document.createElement("div");
   counterArea.textContent = gender === "men" ? countMen : countWomen;
+  counterArea.setAttribute(
+    "style",
+    "padding: 10px 1px; border: solid; border-radius: 10px; font-size: 25px;  text-align: center;"
+  );
 
   const buttonContainer = document.createElement("div");
-  buttonContainer.className = "button-container";
-  buttonContainer.style.padding = "10px";
-  buttonContainer.style.display = "flex";
-  buttonContainer.style.alignItems = "center";
+  buttonContainer.setAttribute(
+    "style",
+    "padding: 10px; display: flex; align-items: center;"
+  );
 
   buttonContainer.appendChild(buttonAdd);
   buttonContainer.appendChild(buttonRemove);

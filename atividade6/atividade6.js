@@ -14,13 +14,9 @@ display.appendChild(result);
 
 updateDisplay("0");
 
-function updateDisplay(value) {
-  result.textContent = value;
-}
-
 var buttons = [
   { value: "AC", class: "color1" },
-  { value: "-/+", class: "color1" },
+  { value: "+/-", class: "color1" },
   { value: "%", class: "color1" },
   { value: "/", class: "color3" },
   { value: "7", class: "color2" },
@@ -55,82 +51,116 @@ buttons.forEach(function (buttonValue) {
   buttonContainer.appendChild(button);
 });
 
-function calculate() {
-  var expression = result.textContent;
-  try {
-    var resultado = eval(expression);
-    updateDisplay(resultado);
-  } catch (error) {
-    updateDisplay("Erro");
-  }
-  updateDisplay(resultado);
-  isResultDisplayed = true;
-}
-
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  if (b === 0) {
-    return "Erro";
-  }
-  return a / b;
-}
-
-function percentage(number) {
-  return number / 100;
-}
-
-var isResultDisplayed = false;
-
-function buttonClick(value) {
-  if (value === "=") {
-    calculate();
-  } else if (value === "AC") {
-    result.textContent = "0";
-  } else if (value === "-/+") {
-    if (result.textContent !== "0" && result.textContent !== "Erro") {
-      if (result.textContent.charAt(0) === "-") {
-        result.textContent = result.textContent.slice(2);
-      } else {
-        result.textContent = "(-" + result.textContent + ")";
-      }
-    }
-  } else if (value === "%") {
-    var currentValue = parseFloat(result.textContent);
-    var newValue = percentage(currentValue);
-    updateDisplay(newValue);
-  } else {
-    if (isResultDisplayed) {
-      if (!["+", "-", "*", "/"].includes(value)) {
-        result.textContent = "0";
-      }
-      isResultDisplayed = false;
-    }
-
-    if (result.textContent === "0" || result.textContent === "Erro") {
-      if (value === ".") {
-        result.textContent = "0" + value;
-      } else {
-        result.textContent = value;
-      }
-    } else {
-      if (!(value === "." && result.textContent.includes("."))) {
-        result.textContent += value;
-      }
-    }
-  }
-}
-
 var detalhe = document.createElement("div");
 detalhe.classList.add("detalhe");
 calculadora.appendChild(detalhe);
+
+var currentNumber = "";
+var operands = [];
+var operators = [];
+var restart = false;
+
+function updateDisplay(value) {
+  result.textContent = value;
+}
+function addDigit(digit) {
+  if (digit === "." && (currentNumber.includes(".") || !currentNumber)) return;
+
+  if (restart) {
+    currentNumber = digit;
+    restart = false;
+  } else {
+    currentNumber += digit;
+  }
+
+  updateDisplay(currentNumber);
+}
+
+function setOperator(newOperator) {
+  if (currentNumber) {
+    operands.push(parseFloat(currentNumber));
+    currentNumber = "";
+  }
+
+  operators.push(newOperator);
+  restart = false;
+}
+
+function calculate() {
+  if (operands.length < 1 || operators.length === 0) return;
+
+  operands.push(parseFloat(currentNumber));
+
+  // Loop para realizar as operações
+  for (let i = 0; i < operators.length; i++) {
+    const operator = operators[i];
+    const nextOperand = operands[i + 1];
+
+    switch (operator) {
+      case "+":
+        operands[i + 1] = operands[i] + nextOperand;
+        break;
+      case "-":
+        operands[i + 1] = operands[i] - nextOperand;
+        break;
+      case "*":
+        operands[i + 1] = operands[i] * nextOperand;
+        break;
+      case "/":
+        if (nextOperand === 0) {
+          updateDisplay("Error: Division by zero");
+          return;
+        }
+        operands[i + 1] = operands[i] / nextOperand;
+        break;
+      default:
+        break;
+    }
+  }
+
+  currentNumber = operands[operands.length - 1].toString();
+  operands = [];
+  operators = [];
+  restart = true;
+  updateDisplay(currentNumber);
+}
+
+function clearCalculator() {
+  currentNumber = "";
+  operands = [];
+  operators = [];
+  restart = true;
+  updateDisplay("0");
+}
+
+function setPercentage() {
+  let result = parseFloat(currentNumber) / 100;
+  if (
+    operators.length > 0 &&
+    ["+", "-"].includes(operators[operators.length - 1])
+  ) {
+    let lastValue = operands[operands.length - 1] || 0;
+
+    result = lastValue * result;
+  }
+
+  currentNumber = result.toString();
+  updateDisplay(result);
+}
+
+function buttonClick(value) {
+  if (/^[0-9.]+$/.test(value)) {
+    addDigit(value);
+  } else if (["+", "-", "*", "/"].includes(value)) {
+    setOperator(value);
+  } else if (value === "=") {
+    calculate();
+  } else if (value === "AC") {
+    clearCalculator();
+  } else if (value === "+/-") {
+    currentNumber = (-parseFloat(currentNumber)).toString();
+    updateDisplay(currentNumber);
+  } else if (value === "%") {
+    setPercentage();
+  }
+}
