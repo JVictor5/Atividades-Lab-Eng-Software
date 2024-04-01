@@ -74,6 +74,9 @@ function addDigit(digit) {
   }
 
   updateDisplay(currentNumber);
+  document.querySelectorAll(".button-container input").forEach((btn) => {
+    btn.classList.remove("active");
+  });
 }
 
 function setOperator(newOperator) {
@@ -91,7 +94,6 @@ function calculate() {
 
   operands.push(parseFloat(currentNumber));
 
-  // Loop para realizar as operações
   for (let i = 0; i < operators.length; i++) {
     const operator = operators[i];
     const nextOperand = operands[i + 1];
@@ -153,6 +155,12 @@ function buttonClick(value) {
     addDigit(value);
   } else if (["+", "-", "*", "/"].includes(value)) {
     setOperator(value);
+    document.querySelectorAll(".button-container input").forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    document
+      .querySelector(`.button-container input[value='${value}']`)
+      .classList.add("active");
   } else if (value === "=") {
     calculate();
   } else if (value === "AC") {

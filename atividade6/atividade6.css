@@ -60,6 +60,10 @@
   margin-bottom: 5px;
 }
 
+.button-container input.color3.active {
+  background-color: #faf7f7;
+  color: #fd9b02;
+}
 .color1 {
   background-color: #a5a5a5;
   color: #0c0c0c;
