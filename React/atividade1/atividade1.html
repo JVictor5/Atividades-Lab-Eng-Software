@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="menu cf">
+      <li><a href="../../index.html">Js</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li>
+        <a href="./atividade1.html">Semana 7</a>
+        <ul class="submenu">
+          <li><a href="./atividade1.html">Atividade 1</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div id="root" class="texto"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const root = document.getElementById("root");
+      const text = "Venha estudar na Fatec";
+      let index = 0;
+      let typingSpeed = 125;
+      let erasingSpeed = 25;
+
+      function typeWriter() {
+        root.textContent = text.slice(0, index);
+        if (index === text.length) {
+          setTimeout(eraseText, 3000); // Tempo de espera após escrever todo o texto
+          return;
+        }
+        index++;
+        setTimeout(typeWriter, typingSpeed);
+      }
+
+      function eraseText() {
+        root.textContent = text.slice(0, index);
+        if (index === 0) {
+          setTimeout(typeWriter, 0); // Comece a escrever imediatamente após apagar todo o texto
+          return;
+        }
+        index--;
+        setTimeout(eraseText, erasingSpeed);
+      }
+
+      typeWriter();
+    </script>
+  </body>
+</html>

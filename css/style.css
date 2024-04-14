@@ -160,4 +160,5 @@ body {
 }
 .logo {
   filter: drop-shadow(10px 7px 10px white);
+  height: 30rem;
 }
